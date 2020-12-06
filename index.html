@@ -57,6 +57,23 @@
         ga('send', 'pageview');
     </script>
     <!-- End Google Analytics -->
+    <script>
+        function searchParam(key) {
+            return new URLSearchParams(location.search).get(key);
+        };
+        function hide (elements) {
+            elements = elements.length ? elements : [elements];
+            for (var index = 0; index < elements.length; index++) {
+                elements[index].style.display = 'none';
+            }
+        }
+        function show (elements, specifiedDisplay) {
+            elements = elements.length ? elements : [elements];
+            for (var index = 0; index < elements.length; index++) {
+                elements[index].style.display = specifiedDisplay || 'block';
+            }
+        }
+    </script>
 
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet'
           type='text/css'>
@@ -134,6 +151,13 @@
                         <div class="display-tc animate-box" data-animate-effect="fadeIn">
                             <h1>Charlie &amp; Sienna</h1>
                             <h2>우주 최강 커플 탄생!</h2>
+                            <script>
+                                // const name = searchParam('name')
+                                // const test = 'asfasdf'
+                                // document.write(name)
+                            </script>
+                           
+                            <h1 class="div1"></h1>
                             <div class="simply-countdown simply-countdown-one"></div>
                             <h1 class="just-married" style="display: none;">Just Married!!</h1>
                         </div>
@@ -492,7 +516,31 @@
             <div class="row">
                 <div class="display-t">
                     <div class="display-tc">
-                        <div class="col-md-10 col-md-offset-1">
+                        <div id="from-groom" class="col-md-10 col-md-offset-1">
+                            <div class="col-md-6 col-sm-6 text-center">
+                                <div class="event-wrap animate-box">
+                                    <h3>🤵 신랑 아버지(박만우) 에게 축의하기 </h3>
+                                    <div class="event-col">
+                                        <span>
+                                            <h3>우리은행</h3>
+                                            <h3>057-078657-12-401</h3>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-center">
+                                <div class="event-wrap animate-box">
+                                    <h3>👰 신랑 어머니(정수옥)에게 축의하기 </h3>
+                                    <div class="event-col">
+                                        <span class="text-center">
+                                            <h3>우리은행</h3>
+                                            <h3>129-141526-02-203</h3>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="from-none" class="col-md-10 col-md-offset-1">
                             <div class="col-md-6 col-sm-6 text-center">
                                 <div class="event-wrap animate-box">
                                     <h3>🤵 신랑에게 축의하기 </h3>
@@ -521,7 +569,24 @@
                     </div>
                 </div>
             </div>
-            
+            <script>
+                const from = searchParam('from')
+                if (from == "groom") {
+                    var target = document.getElementById('from-none')
+                    console.log('from groom hide none')
+                    // console.log(target)
+                    // target.style.display = 'none'; 
+                    // $(".from-none").hide();
+                    hide(target)   
+                } else {
+                    var target = document.getElementById('from-groom')
+                    console.log('from none hide groom')
+                    // console.log(target)
+                    // target.style.display = 'none'; 
+                    // $(".from-groom").hide();
+                    hide(target)
+                }
+            </script>
         </div>
     </div>
 
